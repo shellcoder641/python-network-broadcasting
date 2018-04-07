@@ -1,0 +1,14 @@
+Usage:
+run the server using the command:
+python Server.py <port number> <max_user_count>
+default port will be 58888 and max user count will be 5 if there's no commandline arguments.
+The server will listen for incoming connection and will accept and handle up to max_user_count 
+connections at a time, and handle each one using multithreading.
+
+run the client using the command:
+python User.py <host> <port>
+If there is no commandline arguments, then default port will be 58888 and default host will be 
+localhost.
+The client also using multithreading to work. One thread is for receiving and handling data from the
+server, and another thread is for accepting user input and send commands to the server.
+
