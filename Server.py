@@ -1,6 +1,7 @@
 import socket
 import sys
 import threading
+import time
 i=0
 class userThread(threading.Thread):
 	def __init__(self,host,portNumber,maxUsersCount):
@@ -48,6 +49,9 @@ class userThread(threading.Thread):
 			self.broadcast("#newuser %s"%usr,usrsock)
                         self.users.append(usr)
 			usrsock.send("#welcome %s"%usr)
+                        #in order to prevent this thread to send 2 packets at the same time
+                        #let it sleep for 1 sec so data can arrive in sequence, not at the same time
+                        time.sleep(1)
                         print "Current connecting users:"
                         for usr in self.users:
                             print usr
