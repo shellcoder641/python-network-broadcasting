@@ -12,3 +12,12 @@ localhost.
 The client also using multithreading to work. One thread is for receiving and handling data from the
 server, and another thread is for accepting user input and send commands to the server.
 
+[O]Nothing changed in the server code
+[+]Changed: code is now python 3-compatible, with slight modification due to socket data being transmitted as bytes, not raw string.
+[+]Updated: User program now has a GUI, implemented using PyQt
+[+]Added encryption to make the conversation secure. However the shared key is explicitly included
+[-]Issue: the main chat window will be refreshed when new text is entered or when the user highlight the chat with the cursor
+[-]this is due to the conflict of python thread and PyQt object
+[-]can be fixed but will need to change from python thread to QThread
+[-]NOTE: user needs to enter their username on the commandline first
+[-]Remove colored text due to it's being shell-specific
